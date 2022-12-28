@@ -3,7 +3,18 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-    <div class = 'container'>
-        Hello World!
+    <div class = 'd-flex justify-content-center'>
+        {% if user.is_authenticated %}
+            {% if context %}
+                {{ context.title }}
+            {% else %}
+                У вас нет ни одного воспоминания
+                <button><a href="{% url 'add_post' %}">
+                    Добавить воспоминание
+                </a></button>
+            {% endif %}
+        {% else %}
+            Авторизуйтесь для того, чтобы просматривать и добавлять свои воспоминания
+        {% endif %}
     </div>
 {% endblock content %}
