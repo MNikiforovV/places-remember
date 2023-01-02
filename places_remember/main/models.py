@@ -16,7 +16,7 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class UserProfile(User):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_avatar_profile")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     imageUrl = models.CharField(max_length=150)
 
     @receiver(post_save, sender=User)

@@ -8,5 +8,5 @@ def save_profile(backend, user, response, is_new=False, *args, **kwargs):
                                                                                                   response[
                                                                                                       'access_token']))
     elif backend.name == 'google-oauth2':
-        if is_new and response.get('picture'):
-            UserProfile.objects.filter(owner=user).update(imageUrl=response['picture'])
+        if response.get('picture'):
+            UserProfile.objects.filter(user=user).update(imageUrl=response['picture'])
