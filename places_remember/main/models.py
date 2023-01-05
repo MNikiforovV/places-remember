@@ -15,7 +15,7 @@ class Post(models.Model):
     #author
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-class UserProfile(User):
+class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     imageUrl = models.CharField(max_length=150)
 
