@@ -83,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'pr',
         'USER': 'postgres',
-        'PASSWORD': '0000',
+        'PASSWORD': '1111',
         'HOST': 'localhost',
         'PORT': '5432',
     },
@@ -159,5 +159,5 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.associate_user',
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
-    'main.pipeline.save_profile',
+    'auth.pipeline.save_profile',
 )
