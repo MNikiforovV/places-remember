@@ -1,8 +1,8 @@
 import pytest
 from django.urls import reverse
-from . import views
 from .models import Post, User
 from auth.models import UserProfile
+from . import database as db
 
 
 def test_index(client):
@@ -64,7 +64,7 @@ def test_get_posts_by_user(client):
         title="test", description="test",
         latitude="0", longitude="0", user=user
         )
-    posts = views.get_posts_by_user(user=user)
+    posts = db.get_posts_by_user(user=user)
     assert post in posts
 
 
@@ -75,7 +75,7 @@ def test_get_post_by_id(client):
         title="test", description="test",
         latitude="0", longitude="0", user=user
         )
-    found_post = views.get_post_by_id(post.id)
+    found_post = db.get_post_by_id(post.id)
     assert found_post.id == post.id
 
 
@@ -83,7 +83,7 @@ def test_get_post_by_id(client):
 def test_get_profile_by_user(client):
     user = User.objects.create(username="test", password="1111")
     profile = UserProfile.objects.get(id=user.id)
-    found_profile = views.get_user_profile(user=user)
+    found_profile = db.get_user_profile(user=user)
     assert profile.id == found_profile.id
 
 
